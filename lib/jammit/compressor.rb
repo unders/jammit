@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Jammit
 
   # Uses the YUI Compressor or Closure Compiler to compress JavaScript.
@@ -71,6 +72,7 @@ module Jammit
       else
         js = concatenate(paths - jst_paths) + compile_jst(jst_paths)
       end
+      js = js.force_encoding('utf-8')
       Jammit.compress_assets ? @js_compressor.compress(js) : js
     end
 
